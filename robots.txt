@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /cv-samuel-boisneault.pdf
+Disallow: /cv-samuel-boisneault-en.pdf
