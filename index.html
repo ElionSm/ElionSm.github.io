@@ -77,7 +77,7 @@
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-areas: "id" "switch" "doc" "project" "contact";
+    grid-template-areas: "id" "switch" "doc" "contact" "project";
     row-gap: 24px;
   }
 
@@ -179,18 +179,19 @@
   .btn-download { border: 1.5px solid var(--ink); color: var(--ink); padding: 11.5px 10px; }
   .note { margin-top: 2px; font-size: 0.85rem; color: var(--muted); text-align: center; }
 
-  /* ---------- The project that sets the profile apart ---------- */
+  /* ---------- The project, under everything ---------- */
   .project {
     grid-area: project;
-    max-width: 46ch;
-    padding-left: 16px;
-    border-left: 3px solid var(--accent);
-  }
-  .project h2 { font-size: 1.1rem; font-weight: 900; line-height: 1.3; }
-  .project p { margin-top: 6px; color: var(--muted); }
-  .project a {
-    display: inline-block;
     margin-top: 8px;
+    padding-top: 22px;
+    border-top: 1.5px solid var(--rule);
+    display: grid;
+    gap: 6px 32px;
+  }
+  .project h2 { font-size: 1.05rem; font-weight: 900; line-height: 1.3; }
+  .project p { color: var(--muted); max-width: 60ch; }
+  .project a {
+    justify-self: start;
     color: var(--ink);
     font-weight: 700;
     text-decoration: underline;
@@ -232,14 +233,14 @@
     .wrap {
       grid-template-columns: minmax(0, 1fr) auto;
       grid-template-rows: auto auto 1fr auto;
-      grid-template-areas: "id doc" "switch doc" "project doc" "contact doc";
+      grid-template-areas: "id doc" "switch doc" "contact doc" "project project";
       column-gap: 56px;
       row-gap: 28px;
     }
     .id { align-self: end; }
-    .project { align-self: center; }
     .contact { align-self: end; }
-    .doc { align-self: center; }
+    .project { grid-template-columns: minmax(0, 1fr) auto; align-items: end; margin-top: 12px; }
+    .project a { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
     .doc { grid-template-columns: 310px 180px; column-gap: 24px; }
     /* The left column is what remains beside a 514px document: size the
        name to it, so BOISNEAULT never runs under the page. */
@@ -288,19 +289,19 @@
     </div>
   </section>
 
-  <section class="project" aria-labelledby="project-title">
-    <h2 id="project-title">agent-memory-security</h2>
-    <p data-l="fr">Mon projet open source sur la sécurité des agents IA. Une instruction cachée dans un document lu par l'agent devient un souvenir persistant et, une session plus tard, pousse le modèle à proposer l'envoi d'un rapport à l'attaquant. La défense ne filtre pas le texte : chaque mémoire porte une origine attribuée par le code, jamais par le modèle, et le runtime refuse toute action sensible qu'aucune mémoire assez fiable ne justifie. Le modèle propose, le code décide. Les outils sont simulés, rien n'est jamais envoyé.</p>
-    <p data-l="en" lang="en">My open-source project on AI agent security. An instruction hidden in a document the agent reads becomes a persistent memory and, a session later, leads the model to propose sending a report to the attacker. The defence does not filter text: every memory carries an origin assigned by code, never by the model, and the runtime refuses any sensitive action that no sufficiently trusted memory supports. The model proposes, the code decides. Tools are simulated, so nothing is ever sent.</p>
-    <a data-l="fr" href="https://github.com/ElionSm/agent-memory-security">Voir le projet sur GitHub</a>
-    <a data-l="en" lang="en" href="https://github.com/ElionSm/agent-memory-security">See the project on GitHub</a>
-  </section>
-
   <footer class="contact">
     <a href="mailto:samuelboisneault.pro@gmail.com">samuelboisneault.pro@gmail.com</a>
     <a href="https://www.linkedin.com/in/samuel-boisneault">LinkedIn</a>
     <a href="https://github.com/ElionSm">GitHub</a>
   </footer>
+
+  <section class="project" aria-labelledby="project-title">
+    <h2 id="project-title">agent-memory-security</h2>
+    <p data-l="fr">Mon projet open source sur la sécurité des agents IA : un souvenir empoisonné pousse le modèle à proposer l'envoi d'un rapport à l'attaquant, et le code le refuse d'après l'origine du souvenir.</p>
+    <p data-l="en" lang="en">My open-source project on AI agent security: a poisoned memory leads the model to propose sending a report to the attacker, and the code refuses it based on where the memory came from.</p>
+    <a data-l="fr" href="https://github.com/ElionSm/agent-memory-security">Voir sur GitHub</a>
+    <a data-l="en" lang="en" href="https://github.com/ElionSm/agent-memory-security">See on GitHub</a>
+  </section>
 
 </main>
 <script>
